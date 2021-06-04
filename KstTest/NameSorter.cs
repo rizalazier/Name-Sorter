@@ -14,9 +14,6 @@ namespace KstTest
 {
     public partial class Form1 : Form
     {
-        private string UnsortedNames;
-        private string SortedNames;
-
         public Form1()
         {
             InitializeComponent();
@@ -32,8 +29,7 @@ namespace KstTest
         {
             try
             {
-                UnsortedNames = Jobs.ReadNamesText();
-                TextBoxUnsorted.Text = UnsortedNames;
+                TextBoxUnsorted.Text = Jobs.ReadNamesText();
                 ButtonSort.Enabled = true;
             }
             catch (Exception)
@@ -46,8 +42,7 @@ namespace KstTest
         {
             try
             {
-                SortedNames = Jobs.SortNamesText();
-                TextBoxSorted.Text = SortedNames;
+                TextBoxSorted.Text = Jobs.SortNamesText();
                 ButtonRead.Enabled = false;
                 ButtonReadSort.Enabled = false;
                 ButtonSave.Enabled = true;
@@ -61,17 +56,21 @@ namespace KstTest
 
         private void ButtonReadSort_Click(object sender, EventArgs e)
         {
-            object s = "ReadSort";
-            EventArgs t = null;
-            ButtonRead_Click(s, t);
-            ButtonSort_Click(s, t);
-            ButtonSave_Click(s, t);
+            try
+            {
+                ButtonRead_Click(sender, e);
+                ButtonSort_Click(sender, e);
+                ButtonSave_Click(sender, e);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error While Processing!");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UnsortedNames = "";
-            SortedNames = "";
             TextBoxUnsorted.Clear();
             TextBoxSorted.Clear();
             ButtonRead.Enabled = true;
