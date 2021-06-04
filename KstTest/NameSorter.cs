@@ -14,6 +14,7 @@ namespace KstTest
 {
     public partial class Form1 : Form
     {
+        private readonly Jobs jobs = new Jobs(); 
         public Form1()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace KstTest
         {
             try
             {
-                TextBoxUnsorted.Text = Jobs.ReadNamesText();
+                TextBoxUnsorted.Text = jobs.ReadNamesText();
                 ButtonSort.Enabled = true;
             }
             catch (Exception)
@@ -42,7 +43,7 @@ namespace KstTest
         {
             try
             {
-                TextBoxSorted.Text = Jobs.SortNamesText();
+                TextBoxSorted.Text = jobs.SortNamesText();
                 ButtonRead.Enabled = false;
                 ButtonReadSort.Enabled = false;
                 ButtonSave.Enabled = true;
@@ -83,7 +84,7 @@ namespace KstTest
         {
             try
             {
-                Jobs.WriteNamesText();
+                jobs.WriteNamesText();
                 MessageBox.Show("Save To File Succeed!");
             }
             catch (Exception)
